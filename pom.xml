@@ -9,7 +9,7 @@
 	</parent>
 
 	<groupId>com.ontimize</groupId>
-	<artifactId>ontimize-boot</artifactId>
+	<artifactId>ontimize-boot-web-archetype</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -34,31 +34,31 @@
 
 			<dependency>
 				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-api</artifactId>
+				<artifactId>ontimize-boot-web-archetype-api</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-boot</artifactId>
+				<artifactId>ontimize-boot-web-archetype-boot</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-frontend</artifactId>
+				<artifactId>ontimize-boot-web-archetype-frontend</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-model</artifactId>
+				<artifactId>ontimize-boot-web-archetype-model</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 			
 			<dependency>
 				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-ws</artifactId>
+				<artifactId>ontimize-boot-web-archetype-ws</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 

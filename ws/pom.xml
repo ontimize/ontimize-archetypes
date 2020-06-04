@@ -3,16 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ontimize</groupId>
-		<artifactId>ontimize-boot</artifactId>
+		<artifactId>ontimize-boot-web-archetype</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>ontimize-boot-ws</artifactId>
+	<artifactId>ontimize-boot-web-archetype-ws</artifactId>
 	<name>${project.artifactId}</name>
 	<description>${project.artifactId}</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.ontimize</groupId>
-			<artifactId>ontimize-boot-model</artifactId>
+			<artifactId>ontimize-boot-web-archetype-model</artifactId>
 		</dependency>
 
 		<dependency>
