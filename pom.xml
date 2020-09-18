@@ -17,9 +17,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<hsqldatabase.path>src/main/db</hsqldatabase.path>
-		<database.url>jdbc:hsqldb:hsql://localhost:9013/templateDB</database.url>
-		<hsqldb.version>2.3.4</hsqldb.version>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
 		<frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
 	</properties>
@@ -34,38 +31,8 @@
 
 			<dependency>
 				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-api</artifactId>
-				<version>1.0.0</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-boot</artifactId>
-				<version>1.0.0</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.ontimize</groupId>
 				<artifactId>ontimize-boot-web-archetype-frontend</artifactId>
 				<version>1.0.0</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-model</artifactId>
-				<version>1.0.0</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-ws</artifactId>
-				<version>1.0.0</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.hsqldb</groupId>
-				<artifactId>hsqldb</artifactId>
-				<version>${hsqldb.version}</version>
 			</dependency>
 
 		</dependencies>
@@ -105,10 +72,6 @@
     </profiles>
 	
   <modules>
-    <module>api</module>
-    <module>model</module>
-    <module>ws</module>
     <module>frontend</module>
-    <module>boot</module>
   </modules>
 </project>
