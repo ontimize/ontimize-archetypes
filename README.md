@@ -17,4 +17,4 @@ This branch contains the project that generates the Ontimize Boot archetype with
 		npm install
 		npm start 
 	
-Use the following URL to access the [https://localhost:33333/app/index.html](https://localhost:33333/app/index.html) application 
+Use the following URL to access the [http://localhost:4299/](http://localhost:4299/) application 
