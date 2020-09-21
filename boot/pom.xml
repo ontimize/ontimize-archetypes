@@ -26,10 +26,6 @@
 
 		<dependency>
 			<groupId>com.ontimize</groupId>
-			<artifactId>ontimize-boot-web-archetype-frontend</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.ontimize</groupId>
 			<artifactId>ontimize-boot-web-archetype-model</artifactId>
 		</dependency>
 		<dependency>
