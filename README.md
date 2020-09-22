@@ -1,6 +1,6 @@
 
 # Ontimize Boot
-This branch contains the project that generates the Ontimize Boot archetype with the Ontimize Web 8 frontend.
+This branch contains the project that generates the Ontimize Boot archetype with the Ontimize Web 8 frontend (without Maven).
 
 - The command to create an application using this archetype is the following:
 
@@ -10,20 +10,20 @@ This branch contains the project that generates the Ontimize Boot archetype with
 	
 		mvn install
 
-## Start the database
+## Start the database:
 
  Enter the `model` folder and execute the command
 
 		mvn exec:java -Prun_database
 	
-## Start only the server: 
+## Start the server: 
  - Go to the `boot` folder and run the command
 
 		mvn spring-boot:run
 
-## Run the client alone, outside the spring-boot server
+## Run the client:
 
-- Go to the `frontend/src/main/ngx` folder, if you have node and npm installed on your system run the following commands:
+- Go to the `frontend/ngx` folder, if you have node and npm installed on your system run the following commands:
 
 		npm install
 		npm start 
