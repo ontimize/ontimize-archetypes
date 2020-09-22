@@ -1,6 +1,6 @@
 
 # Ontimize Boot
-This branch contains the project that generates the Ontimize Boot archetype with the Ontimize Web 8 frontend.
+This branch contains the project that generates the Ontimize Boot backend.
 
 - The command to create an application using this archetype is the following:
 
