@@ -21,4 +21,4 @@ This branch contains the project that generates the Ontimize Boot archetype with
 
 		mvn spring-boot:run
 	
-Use the following URL to access the [https://localhost:33333/app/index.html](https://localhost:33333/app/index.html) application 
+Use the following URL to access the [https://localhost:4299/](https://localhost:4299/) application 
