@@ -1,4 +1,4 @@
-package com.ontimize.ws.core.rest;
+package ws.core.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
