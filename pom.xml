@@ -8,7 +8,7 @@
 		<version>1.1.1</version>
 	</parent>
 
-	<groupId>com.ontimize</groupId>
+	<groupId>com.imatia</groupId>
 	<artifactId>ontimize-boot-archetype</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
@@ -31,25 +31,25 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.ontimize</groupId>
+				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-archetype-api</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.ontimize</groupId>
+				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-archetype-boot</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.ontimize</groupId>
+				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-archetype-model</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 			
 			<dependency>
-				<groupId>com.ontimize</groupId>
+				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-archetype-ws</artifactId>
 				<version>1.0.0</version>
 			</dependency>

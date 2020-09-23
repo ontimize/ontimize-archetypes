@@ -1,4 +1,4 @@
-package com.ontimize.model.core.dao;
+package model.core.dao;
 
 
 import org.springframework.context.annotation.Lazy;

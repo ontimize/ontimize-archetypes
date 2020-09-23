@@ -1,4 +1,4 @@
-package com.ontimize.ws.core.rest;
+package ws.core.rest;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ontimize.api.core.service.IUserService;
 import com.ontimize.db.EntityResult;
 import com.ontimize.jee.server.rest.ORestController;
+
+import api.core.service.IUserService;
 
 
 @RestController
 @RequestMapping("/users")
-@ComponentScan(basePackageClasses={com.ontimize.api.core.service.IUserService.class})
+@ComponentScan(basePackageClasses={api.core.service.IUserService.class})
 public class UserRestController extends ORestController<IUserService> {
 
 	@Autowired
