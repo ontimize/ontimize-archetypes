@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.ontimize</groupId>
-        <artifactId>ontimize-boot-web-archetype</artifactId>
+        <groupId>com.imatia</groupId>
+        <artifactId>ontimize-boot-web-8-archetype</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <name>${project.artifactId}</name>
     <description>${project.artifactId} app.</description>
-    <artifactId>ontimize-boot-web-archetype-frontend</artifactId>
+    <artifactId>ontimize-boot-web-8-archetype-frontend</artifactId>
     <packaging>jar</packaging>
 
     <build>

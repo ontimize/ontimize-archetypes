@@ -8,8 +8,8 @@
 		<version>1.1.1</version>
 	</parent>
 
-	<groupId>com.ontimize</groupId>
-	<artifactId>ontimize-boot-web-archetype</artifactId>
+	<groupId>com.imatia</groupId>
+	<artifactId>ontimize-boot-web-8-archetype</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -33,32 +33,32 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-api</artifactId>
+				<groupId>com.imatia</groupId>
+				<artifactId>ontimize-boot-web-8-archetype-api</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-boot</artifactId>
+				<groupId>com.imatia</groupId>
+				<artifactId>ontimize-boot-web-8-archetype-boot</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-frontend</artifactId>
+				<groupId>com.imatia</groupId>
+				<artifactId>ontimize-boot-web-8-archetype-frontend</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-model</artifactId>
+				<groupId>com.imatia</groupId>
+				<artifactId>ontimize-boot-web-8-archetype-model</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 			
 			<dependency>
-				<groupId>com.ontimize</groupId>
-				<artifactId>ontimize-boot-web-archetype-ws</artifactId>
+				<groupId>com.imatia</groupId>
+				<artifactId>ontimize-boot-web-8-archetype-ws</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
