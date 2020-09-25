@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.imatia</groupId>
-		<artifactId>ontimize-boot-web-maven-archetype</artifactId>
+		<artifactId>ontimize-boot-web-8-maven-archetype</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>ontimize-boot-web-maven-archetype-model</artifactId>
+	<artifactId>ontimize-boot-web-8-maven-archetype-model</artifactId>
 	<name>${project.artifactId}</name>
 	<description>${project.artifactId}</description>
 	<properties>
@@ -19,7 +19,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.imatia</groupId>
-			<artifactId>ontimize-boot-web-maven-archetype-api</artifactId>
+			<artifactId>ontimize-boot-web-8-maven-archetype-api</artifactId>
 		</dependency>
 
 		<dependency>
