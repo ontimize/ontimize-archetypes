@@ -4,7 +4,7 @@ This branch contains the project that generates the Ontimize Boot archetype with
 
 - The command to create an application using this archetype is the following:
 
-	    mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate -DgroupId=YOUR_GROUP_ID -DartifactId=YOUR_ARTIFACT_ID -Dversion=YOUR_VERSION -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-boot -DarchetypeVersion=1.0.0 -DinteractiveMode=false -DarchetypeCatalog=https://artifactory.imatia.com/public-artifactory/ontimize-archetypes/archetype-catalog.xml
+	    mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate -DgroupId=YOUR_GROUP_ID -DartifactId=YOUR_ARTIFACT_ID -Dversion=YOUR_VERSION -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-boot-web-8-archetype -DarchetypeVersion=1.0.0 -DinteractiveMode=false -DarchetypeCatalog=https://artifactory.imatia.com/public-artifactory/ontimize-archetypes/archetype-catalog.xml
 
 - Enter the parent directory and run an install:
 	
