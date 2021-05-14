@@ -105,10 +105,10 @@
     </profiles>
 	
   <modules>
-    <module>api</module>
-    <module>model</module>
-    <module>ws</module>
-    <module>frontend</module>
-    <module>boot</module>
+    <module>ontimize-boot-archetype-api</module>
+    <module>ontimize-boot-archetype-model</module>
+    <module>ontimize-boot-archetype-ws</module>
+    <module>ontimize-boot-archetype-frontend</module>
+    <module>ontimize-boot-archetype-boot</module>
   </modules>
 </project>
