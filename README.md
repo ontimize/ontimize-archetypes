@@ -26,6 +26,9 @@ From this folder structure you can discard the `target` directory sub-tree, just
 
 You can modify the archetype any way you want (more info [here](https://geekofficedog.blogspot.com/2013/08/creating-maven-archetypes-tutorial.html)), but the most important file you need to check is `archetype-metadata.xml` located under the `src/main/resources/META-INF/maven` directory. This file groups the resources as file sets that are going to be filtered by the archetype during the generation process.
 
+You need to modify the property `start-class` on the pom.xml of the `boot` module located under `target/generated-sources/archetype/src/main/resources/archetype-resources`. Just replace the package of ServerApplication for `${package}.ServerApplication`
+
+
 ## Creating the archetype
 
 You only have to go to the `target/generated-sources/archetype` and run:
