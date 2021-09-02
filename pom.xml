@@ -9,7 +9,7 @@
 	</parent>
 
 	<groupId>com.imatia</groupId>
-	<artifactId>ontimize-boot-archetype</artifactId>
+	<artifactId>ontimize-boot-backend</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<properties>
@@ -32,25 +32,25 @@
 
 			<dependency>
 				<groupId>com.imatia</groupId>
-				<artifactId>ontimize-boot-archetype-api</artifactId>
+				<artifactId>ontimize-boot-backend-api</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.imatia</groupId>
-				<artifactId>ontimize-boot-archetype-boot</artifactId>
+				<artifactId>ontimize-boot-backend-boot</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.imatia</groupId>
-				<artifactId>ontimize-boot-archetype-model</artifactId>
+				<artifactId>ontimize-boot-backend-model</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 			
 			<dependency>
 				<groupId>com.imatia</groupId>
-				<artifactId>ontimize-boot-archetype-ws</artifactId>
+				<artifactId>ontimize-boot-backend-ws</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
@@ -85,9 +85,9 @@
     </profiles>
 	
   <modules>
-    <module>ontimize-boot-archetype-api</module>
-    <module>ontimize-boot-archetype-model</module>
-    <module>ontimize-boot-archetype-ws</module>
-    <module>ontimize-boot-archetype-boot</module>
+    <module>ontimize-boot-backend-api</module>
+    <module>ontimize-boot-backend-model</module>
+    <module>ontimize-boot-backend-ws</module>
+    <module>ontimize-boot-backend-boot</module>
   </modules>
 </project>
