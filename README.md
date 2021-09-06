@@ -4,8 +4,8 @@ This repository contains the different projects from which the archetypes for th
 
 Each branch of this repository contains a project that serves to create the associated archetype. The different archetypes available are listed below
 
+-   [Ontimize Boot Backend](https://github.com/ontimize/ontimize-archetypes-projects/tree/ontimize-boot-backend)
 -   [Ontimize Boot with Ontimize Web 8.X.X frontend](https://github.com/ontimize/ontimize-archetypes-projects/tree/ontimize-boot-web-8)
--   [Ontimize Boot](https://github.com/ontimize/ontimize-archetypes-projects/tree/ontimize-boot-backend)
 -   [Ontimize Boot with Ontimize Web 8.X.X (without Maven) frontend](https://github.com/ontimize/ontimize-archetypes-projects/tree/ontimize-boot-web-8-nomaven)
 
 
