@@ -3,14 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.imatia</groupId>
-		<artifactId>ontimize-boot-web-8-archetype</artifactId>
-		<version>1.0.0</version>
+		<groupId>com.imatia.archetype</groupId>
+    <artifactId>ontimize-boot-web-8-archetype</artifactId>
+    <version>1.0.0</version>
 	</parent>
 
-	<name>${project.artifactId}</name>
-	<description>${project.artifactId}</description>
 	<artifactId>ontimize-boot-web-8-archetype-boot</artifactId>
+  <name>${project.groupId}:${project.artifactId}</name>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -20,21 +19,22 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.imatia</groupId>
-			<artifactId>ontimize-boot-web-8-archetype-api</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>ontimize-boot-web-8-archetype-api</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.imatia</groupId>
-			<artifactId>ontimize-boot-web-8-archetype-frontend</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>ontimize-boot-web-8-archetype-model</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.imatia</groupId>
-			<artifactId>ontimize-boot-web-8-archetype-model</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>ontimize-boot-web-8-archetype-ws</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>com.imatia</groupId>
-			<artifactId>ontimize-boot-web-8-archetype-ws</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>ontimize-boot-web-8-archetype-frontend</artifactId>
 		</dependency>
 
 		<!-- Ontimize Boot -->

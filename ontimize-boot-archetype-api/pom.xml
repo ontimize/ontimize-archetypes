@@ -3,14 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.imatia</groupId>
-        <artifactId>ontimize-boot-web-8-archetype</artifactId>
-        <version>1.0.0</version>
+      <groupId>com.imatia.archetype</groupId>
+      <artifactId>ontimize-boot-web-8-archetype</artifactId>
+      <version>1.0.0</version>
     </parent>
 
-    <name>${project.artifactId}</name>
-    <description>${project.artifactId}</description>
     <artifactId>ontimize-boot-web-8-archetype-api</artifactId>
+    <name>${project.groupId}:${project.artifactId}</name>
     <packaging>jar</packaging>
 
     <dependencies>

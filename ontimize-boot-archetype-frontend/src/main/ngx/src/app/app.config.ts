@@ -6,14 +6,16 @@ import { SERVICE_CONFIG } from './shared/app.services.config';
 export const CONFIG: Config = {
   // The base path of the URL used by app services.
   apiEndpoint: 'http://localhost:33333',
-
+  bundle: {
+    path: 'bundle'
+  },
   // Application identifier. Is the unique package identifier of the app.
   // It is used when storing or managing temporal data related with the app.
   // By default is set as 'ontimize-web-uuid'.
-  uuid: 'com.ontimize.web.ngx.seed',
+  uuid: 'com.ontimize.web.ngx.jee.seed',
 
   // Title of the app
-  title: 'Ontimize Web Seed',
+  title: 'JEE seed',
 
   //  Language of the application.
   locale: 'en',

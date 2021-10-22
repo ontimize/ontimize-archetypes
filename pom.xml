@@ -5,13 +5,15 @@
 	<parent>
 		<groupId>com.ontimize.boot</groupId>
 		<artifactId>ontimize-boot-parent</artifactId>
-		<version>3.0.0-SNAPSHOT</version>
+		<version>3.7.0</version>
 	</parent>
 
-	<groupId>com.imatia</groupId>
-	<artifactId>ontimize-boot-web-8-archetype</artifactId>
-	<version>1.0.0</version>
-	<packaging>pom</packaging>
+  <groupId>com.imatia.archetype</groupId>
+  <artifactId>ontimize-boot-web-8-archetype</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>${project.groupId}:${project.artifactId}</name>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,41 +35,40 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.imatia</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>ontimize-boot-web-8-archetype-api</artifactId>
-				<version>1.0.0</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.imatia</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>ontimize-boot-web-8-archetype-boot</artifactId>
-				<version>1.0.0</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.imatia</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>ontimize-boot-web-8-archetype-frontend</artifactId>
-				<version>1.0.0</version>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.imatia</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>ontimize-boot-web-8-archetype-model</artifactId>
-				<version>1.0.0</version>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>ontimize-boot-web-8-archetype-ws</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			
-			<dependency>
-				<groupId>com.imatia</groupId>
-				<artifactId>ontimize-boot-web-8-archetype-ws</artifactId>
-				<version>1.0.0</version>
-			</dependency>
-
 			<dependency>
 				<groupId>org.hsqldb</groupId>
 				<artifactId>hsqldb</artifactId>
 				<version>${hsqldb.version}</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 
@@ -82,7 +83,7 @@
 				</plugins>
 		</pluginManagement>
 	</build>
-		
+
 	<profiles>
         <profile>
             <id>default</id>
@@ -94,21 +95,19 @@
                     <id>imatia-artifactory</id>
                     <url>https://artifactory.imatia.com/public-artifactory/libs-release</url>
                     <releases>
-                        <enabled>true</enabled>
                     </releases>
                     <snapshots>
-                        <enabled>true</enabled>
                     </snapshots>
                 </repository>
             </repositories>
         </profile>
     </profiles>
-	
   <modules>
     <module>ontimize-boot-archetype-api</module>
     <module>ontimize-boot-archetype-model</module>
     <module>ontimize-boot-archetype-ws</module>
-    <module>ontimize-boot-archetype-frontend</module>
     <module>ontimize-boot-archetype-boot</module>
+    <module>ontimize-boot-archetype-frontend</module>
+
   </modules>
 </project>

@@ -1,0 +1,6 @@
+endpoints:
+   api:
+      enabled: true
+logging:
+   level:
+      root: info
