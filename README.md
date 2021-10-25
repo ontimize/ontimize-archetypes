@@ -26,4 +26,4 @@
  
  		java -jar <name_of_the_boot_jar>
 	
-Use the following URL to access the [http://localhost:8080/app/index.html](http://localhost:8080/app/index.html) application 
+Use the following URL to access the [http://localhost:33333/app/index.html](http://localhost:33333/app/index.html) application 
