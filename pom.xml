@@ -10,7 +10,7 @@
 
 	<groupId>com.imatia</groupId>
 	<artifactId>ontimize-boot-backend</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,25 +33,25 @@
 			<dependency>
 				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-backend-api</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-backend-boot</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-backend-model</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.2</version>
 			</dependency>
 			
 			<dependency>
 				<groupId>com.imatia</groupId>
 				<artifactId>ontimize-boot-backend-ws</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
