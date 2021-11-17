@@ -1,8 +1,6 @@
 package com.imatia.archetype.ws.core.rest;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +12,8 @@ import com.imatia.archetype.api.core.service.IUserService;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.server.rest.ORestController;
 
-
 @RestController
 @RequestMapping("/users")
-@ComponentScan(basePackageClasses={com.imatia.archetype.api.core.service.IUserService.class})
 public class UserRestController extends ORestController<IUserService> {
 
 	@Autowired
