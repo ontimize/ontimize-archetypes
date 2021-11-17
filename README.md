@@ -6,7 +6,6 @@ Each branch of this repository contains a project that serves to create the asso
 
 -   [Ontimize Boot Backend](https://github.com/ontimize/ontimize-archetypes-projects/tree/ontimize-boot-backend)
 -   [Ontimize Boot with Ontimize Web 8.X.X frontend](https://github.com/ontimize/ontimize-archetypes-projects/tree/ontimize-boot-web-8)
--   [Ontimize Boot with Ontimize Web 8.X.X (without Maven) frontend](https://github.com/ontimize/ontimize-archetypes-projects/tree/ontimize-boot-web-8-nomaven)
 
 
 **If you want to create an archetype from a local project, look at the following steps:**
