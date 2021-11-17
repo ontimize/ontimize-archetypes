@@ -17,7 +17,6 @@ import com.ontimize.jee.server.rest.ORestController;
 
 @RestController
 @RequestMapping("/users")
-@ComponentScan(basePackageClasses={com.imatia.backend.api.core.service.IUserService.class})
 public class UserRestController extends ORestController<IUserService> {
 
 	@Autowired
