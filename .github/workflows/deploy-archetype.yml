@@ -96,13 +96,6 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]" -t elem -n "version" -v "3.0.2" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]" -t elem -n "configuration" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]/x:configuration" -t elem -n "addDefaultExcludes" -v "false" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project" -t elem -n "distributionManagement" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:distributionManagement" -t elem -n "repository" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:distributionManagement/x:repository" -t elem -n "id" -v "ossrh" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:distributionManagement/x:repository" -t elem -n "url" -v "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:distributionManagement" -t elem -n "snapshotRepository" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:distributionManagement/x:snapshotRepository" -t elem -n "id" -v "ossrh" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:distributionManagement/x:snapshotRepository" -t elem -n "url" -v "https://s01.oss.sonatype.org/content/repositories/snapshots" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project" -t elem -n "profiles" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles" -t elem -n "profile" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile" -t elem -n "id" -v "generate-version" pom.xml
@@ -127,12 +120,24 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "artifactId" -v "maven-gpg-plugin" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "version" -v "3.0.1" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "configuration" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profil es/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "configuration" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration" -t elem -n "gpgArguments"  pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration/x:gpgArguments" -t elem -n "arg" -v "--pinentry-mode" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration/x:gpgArguments" -t elem -n "arg" -v "loopback" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration" -t elem -n "keyname" -v "\${gpg.keyname}" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration" -t elem -n "passphraseServerId" -v "\${gpg.passphrase}" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:developers/x:developer[5]" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:developers/x:developer[3]" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:developers/x:developer[2]" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:description" -v "Ontimize Boot Backend is an archetype for building applications with Ontimize Boot Framework." pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:url" -v "https://www.ontimize.com" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:connection" -v "scm:git:git://github.com/ontimize/ontimize-archetypes.git" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:developerConnection" -v "scm:git:ssh://github.com/ontimize/ontimize-archetypes.git" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:url" -v "https://github.com/ontimize/ontimize-archetypes/tree/main" pom.xml
+      - name: Change start-class tag from *-boot pom.xml with xmlstarlet
+        run: |
+          cd target/generated-sources/archetype/src/main/resources/archetype-resources/__rootArtifactId__-boot
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:properties/x:start-class" -v "${package}.ServerApplication" pom.xml
       - name: Deploy archetype
         run: |
          cd target/generated-sources/archetype
