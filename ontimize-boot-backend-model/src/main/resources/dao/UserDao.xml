@@ -11,15 +11,18 @@
     <UpdateKeys>
         <Column>USER_</Column>
     </UpdateKeys>
-    <GeneratedKey>USER_</GeneratedKey>
     <Queries>
         <Query id="default">
             <ValidColumns>
                 <Column>USER_</Column>
-                <Column>EMAIL</Column>
                 <Column>PASSWORD</Column>
                 <Column>NAME</Column>
                 <Column>SURNAME</Column>
+                <Column>EMAIL</Column>
+                <Column>NIF</Column>
+                <Column>USERBLOCKED</Column>
+                <Column>LASTPASSWORDUPDATE</Column>
+                <Column>FIRSTLOGIN</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
@@ -34,10 +37,14 @@
         <Query id="login">
             <ValidColumns>
                 <Column>USER_</Column>
-                <Column>EMAIL</Column>
                 <Column>PASSWORD</Column>
                 <Column>NAME</Column>
                 <Column>SURNAME</Column>
+                <Column>EMAIL</Column>
+                <Column>NIF</Column>
+                <Column>USERBLOCKED</Column>
+                <Column>LASTPASSWORDUPDATE</Column>
+                <Column>FIRSTLOGIN</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
