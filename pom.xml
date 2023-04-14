@@ -8,7 +8,7 @@
   </parent>
   <groupId>com.imatia</groupId>
   <artifactId>ontimize-boot-backend</artifactId>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>99.9.9-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,22 +28,22 @@
       <dependency>
         <groupId>com.imatia</groupId>
         <artifactId>ontimize-boot-backend-api</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>99.9.9-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.imatia</groupId>
         <artifactId>ontimize-boot-backend-boot</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>99.9.9-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.imatia</groupId>
         <artifactId>ontimize-boot-backend-model</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>99.9.9-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.imatia</groupId>
         <artifactId>ontimize-boot-backend-ws</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>99.9.9-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.hsqldb</groupId>

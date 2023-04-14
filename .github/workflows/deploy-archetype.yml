@@ -134,6 +134,8 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:connection" -v "scm:git:git://github.com/ontimize/ontimize-archetypes.git" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:developerConnection" -v "scm:git:ssh://github.com/ontimize/ontimize-archetypes.git" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:url" -v "https://github.com/ontimize/ontimize-archetypes/tree/main" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:groupId" -v "com.ontimize" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:name" -v "Ontimize Boot Backend Archetype" pom.xml
       - name: Change start-class tag from *-boot pom.xml with xmlstarlet
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/__rootArtifactId__-boot
@@ -141,12 +143,11 @@ jobs:
       - name: Deploy archetype
         run: |
          cd target/generated-sources/archetype
-         # mvn -B deploy -Pgenerate-version
-         mvn -B install
+         mvn -B deploy -Pgenerate-version
       - name: Generating backend from current archetype (Test)
         run: |
           cd /tmp
-          mvn -B archetype:generate -DgroupId=com.example -DartifactId=backendtest -Dversion=1.0.0-SNAPSHOT -Dpackage=com.example.backendtest -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-boot-backend-archetype -DarchetypeVersion=1.0.5-SNAPSHOT -DinteractiveMode=false
+          mvn -B archetype:generate -DgroupId=com.example -DartifactId=backendtest -Dversion=1.0.0-SNAPSHOT -Dpackage=com.example.backendtest -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-boot-backend-archetype -DarchetypeVersion=99.9.9-SNAPSHOT -DinteractiveMode=false
           tar -czvf backend.tar.gz backendtest/
       - name: Upload backend ready to download (Test)
         uses: actions/upload-artifact@v3
