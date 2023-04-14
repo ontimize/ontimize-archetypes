@@ -1,5 +1,8 @@
 name: Deploy Ontimize Boot backend archetype
-on: workflow_dispatch
-jobs:
-  Deploy-Ontimize-Boot-backend-archetype:
-    runs-on: ubuntu-latest
+on:
+  workflow_dispatch:
+    inputs:
+      custom-version:
+        type: string
+        description: 'Optional. If you want it to have an additional specific version other than 99.9.9-SNAPSHOT, write it down.'
+        required: false
