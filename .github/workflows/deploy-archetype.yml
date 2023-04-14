@@ -153,8 +153,8 @@ jobs:
       - name: Deploy custom version archetype
         if: "${{ github.event.inputs.custom-version != '' }}"
         run: |
-          mvn -B versions:set -DnewVersion=${{ github.event.inputs.custom-version }} versions:commit
           cd target/generated-sources/archetype
+          mvn -B versions:set -DnewVersion=${{ github.event.inputs.custom-version }} versions:commit
           mvn -B deploy -Pgenerate-version
       - name: Generating backend from current archetype (Test)
         run: |
