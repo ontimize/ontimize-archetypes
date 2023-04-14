@@ -150,13 +150,111 @@ jobs:
         run: |
          cd target/generated-sources/archetype
          mvn -B deploy -Pgenerate-version
-      - name: Deploy custom version archetype
-        if: "${{ github.event.inputs.custom-version != '' }}"
+      - name: Generate archetype from project with custom version
+        run: |
+          mvn -B clean
+          mvn -B versions:set -DnewVersion=${{ github.event.inputs.custom-version }} versions:commit
+          mvn -B archetype:create-from-project
+      - name: Copy .gitignore and delete GitHub Actions with custom version
         run: |
           cd target/generated-sources/archetype
-          mvn -B versions:set -DnewVersion=${{ github.event.inputs.custom-version }} versions:commit
-          mvn -B clean install
-          mvn -B deploy -Pgenerate-version
+          mvn -B clean
+          cp ../../../.gitignore src/main/resources/archetype-resources
+      - name: Generate deploy pom.xml with xmlstarlet with custom version
+        run: |
+          cd target/generated-sources/archetype
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -a "/x:project/x:name" -t elem -n "organization" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "name" -v "Imatia Innovation" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "url" -v "http://imatia.com" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]" -t elem -n "configuration" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]/x:configuration" -t elem -n "useDefaultExcludes" -v "false" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[2]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[2]" -t elem -n "artifactId" -v "maven-deploy-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[2]" -t elem -n "version" -v "3.0.0-M1" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]" -t elem -n "artifactId" -v "maven-source-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]" -t elem -n "version" -v "3.2.1" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]" -t elem -n "executions" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]/x:executions" -t elem -n "execution" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]/x:executions/x:execution" -t elem -n "id" -v "attach-sources" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]/x:executions/x:execution" -t elem -n "goals" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[3]/x:executions/x:execution/x:goals" -t elem -n "goal" -v "jar-no-fork" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[4]" -t elem -n "groupId" -v "org.codehaus.mojo" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[4]" -t elem -n "artifactId" -v "dependency-maven-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[4]" -t elem -n "version" -v "1.0" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]" -t elem -n "artifactId" -v "maven-javadoc-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]" -t elem -n "version" -v "3.2.0" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]" -t elem -n "executions" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]/x:executions" -t elem -n "execution" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]/x:executions/x:execution" -t elem -n "id" -v "attach-javadocs" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]/x:executions/x:execution" -t elem -n "goals" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]/x:executions/x:execution/x:goals" -t elem -n "goal" -v "jar" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]/x:executions/x:execution" -t elem -n "configuration" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]/x:executions/x:execution/x:configuration" -t elem -n "failOnError" -v "false" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[5]/x:executions/x:execution/x:configuration" -t elem -n "doclint" -v "none" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[6]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[6]" -t elem -n "artifactId" -v "maven-surefire-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[6]" -t elem -n "version" -v "3.0.0-M5" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]" -t elem -n "artifactId" -v "maven-resources-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]" -t elem -n "version" -v "3.0.2" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]" -t elem -n "configuration" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[7]/x:configuration" -t elem -n "addDefaultExcludes" -v "false" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project" -t elem -n "profiles" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles" -t elem -n "profile" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile" -t elem -n "id" -v "generate-version" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile" -t elem -n "build" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build" -t elem -n "plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[1]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[1]" -t elem -n "artifactId" -v "maven-source-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[2]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[2]" -t elem -n "artifactId" -v "maven-javadoc-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]" -t elem -n "groupId" -v "org.sonatype.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]" -t elem -n "artifactId" -v "nexus-staging-maven-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]" -t elem -n "version" -v "1.6.7" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]" -t elem -n "extensions" -v "true" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]" -t elem -n "configuration" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]/x:configuration" -t elem -n "serverId" -v "ossrh" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]/x:configuration" -t elem -n "nexusUrl" -v "https://s01.oss.sonatype.org/" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[3]/x:configuration" -t elem -n "autoReleaseAfterClose" -v "true" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "groupId" -v "org.apache.maven.plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "artifactId" -v "maven-gpg-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "version" -v "3.0.1" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profil es/x:profile/x:build/x:plugins/x:plugin[4]" -t elem -n "configuration" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration" -t elem -n "gpgArguments"  pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration/x:gpgArguments" -t elem -n "arg" -v "--pinentry-mode" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration/x:gpgArguments" -t elem -n "arg" -v "loopback" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration" -t elem -n "keyname" -v "\${gpg.keyname}" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:configuration" -t elem -n "passphraseServerId" -v "\${gpg.passphrase}" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:developers/x:developer[5]" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:developers/x:developer[3]" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:developers/x:developer[2]" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:description" -v "Ontimize Boot Backend is an archetype for building applications with Ontimize Boot Framework." pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:url" -v "https://www.ontimize.com" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:connection" -v "scm:git:git://github.com/ontimize/ontimize-archetypes.git" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:developerConnection" -v "scm:git:ssh://github.com/ontimize/ontimize-archetypes.git" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:url" -v "https://github.com/ontimize/ontimize-archetypes/tree/main" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:groupId" -v "com.ontimize" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:name" -v "Ontimize Boot Backend Archetype" pom.xml
+      - name: Change start-class tag from *-boot pom.xml with xmlstarlet with custom version
+        run: |
+          cd target/generated-sources/archetype/src/main/resources/archetype-resources/__rootArtifactId__-boot
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:properties/x:start-class" -v "\${package}.ServerApplication" pom.xml
+      - name: Deploy archetype with custom version
+        run: |
+         cd target/generated-sources/archetype
+         mvn -B deploy -Pgenerate-version     
       - name: Generating backend from current archetype (Test)
         run: |
           cd /tmp
