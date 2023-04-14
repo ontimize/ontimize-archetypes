@@ -311,11 +311,11 @@ jobs:
         run: |
           cd /tmp
           mvn -B archetype:generate -DgroupId=com.example -DartifactId=backendtest -Dversion=1.0.0-SNAPSHOT -Dpackage=com.example.backendtest -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-boot-backend-archetype -DarchetypeVersion=99.9.9-SNAPSHOT -DinteractiveMode=false
-          tar -czvf backend.tar.gz backendtest/
+          tar -czvf custom-backend.tar.gz backendtest/
       - name: Upload backend ready to download (Test)
         uses: actions/upload-artifact@v3
         with:
-          name: backend-zip
+          name: custom-backend-zip
           retention-days: 1
           path: |
-            /tmp/backend.tar.gz
+            /tmp/custom-backend.tar.gz
