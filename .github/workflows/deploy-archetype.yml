@@ -139,7 +139,7 @@ jobs:
       - name: Change start-class tag from *-boot pom.xml with xmlstarlet
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/__rootArtifactId__-boot
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:properties/x:start-class" -v "${package}.ServerApplication" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:properties/x:start-class" -v "\${package}.ServerApplication" pom.xml
       - name: Deploy archetype
         run: |
          cd target/generated-sources/archetype
