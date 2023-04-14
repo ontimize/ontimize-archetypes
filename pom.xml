@@ -52,24 +52,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-  <profiles>
-    <profile>
-      <id>default</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <repositories>
-        <repository>
-          <id>imatia-artifactory</id>
-          <url>https://artifactory.imatia.com/public-artifactory/libs-release</url>
-          <releases>
-                    </releases>
-          <snapshots>
-                    </snapshots>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
   <modules>
     <module>ontimize-boot-backend-api</module>
     <module>ontimize-boot-backend-model</module>
