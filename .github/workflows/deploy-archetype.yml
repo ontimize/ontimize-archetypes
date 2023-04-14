@@ -150,17 +150,69 @@ jobs:
         run: |
          cd target/generated-sources/archetype
          mvn -B deploy -Pgenerate-version
-      - name: Generate archetype from project with custom version
+      - name: Generating backend from current archetype (Test)
         run: |
-          mvn -B clean
+          cd /tmp
+          mvn -B archetype:generate -DgroupId=com.example -DartifactId=backendtest -Dversion=1.0.0-SNAPSHOT -Dpackage=com.example.backendtest -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-boot-backend-archetype -DarchetypeVersion=99.9.9-SNAPSHOT -DinteractiveMode=false
+          tar -czvf backend.tar.gz backendtest/
+      - name: Upload backend ready to download (Test)
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend-zip
+          retention-days: 1
+          path: |
+            /tmp/backend.tar.gz
+  Deploy-Ontimize-Boot-backend-archetype-with-custom-version:
+    if: github.event.inputs.custom-version != ''
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CI_COMMIT_AUTHOR: ${{ secrets.CI_COMMIT_AUTHOR }}
+      CI_COMMIT_MAIL: ${{ secrets.CI_COMMIT_MAIL }}
+      MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+      MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+      MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+    steps:
+      - name: Get input parameters
+        run: |
+          echo "BRANCH=${{ github.ref }}" >> $GITHUB_ENV
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+      - name: Setup Java JDK and Maven
+        uses: ontimize/setup-java-maven-gitAction@v2.4.4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_CENTRAL_TOKEN
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - name: Setup xmlstarlet
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xmlstarlet
+      - name: Create changes in project before creating archetype
+        run: |
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:properties/x:sonar.organization" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:properties/x:sonar.host.url" pom.xml
+          rm -rf .github/
+          rm -rf README.md
+          mv HELP.md README.md
+      - name: Generate archetype from project
+        run: |
           mvn -B versions:set -DnewVersion=${{ github.event.inputs.custom-version }} versions:commit
+          mvn -B clean
           mvn -B archetype:create-from-project
-      - name: Copy .gitignore and delete GitHub Actions with custom version
+      - name: Copy .gitignore and delete GitHub Actions
         run: |
           cd target/generated-sources/archetype
           mvn -B clean
           cp ../../../.gitignore src/main/resources/archetype-resources
-      - name: Generate deploy pom.xml with xmlstarlet with custom version
+      - name: Generate deploy pom.xml with xmlstarlet
         run: |
           cd target/generated-sources/archetype
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -a "/x:project/x:name" -t elem -n "organization" pom.xml
@@ -247,14 +299,14 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:scm/x:url" -v "https://github.com/ontimize/ontimize-archetypes/tree/main" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:groupId" -v "com.ontimize" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:name" -v "Ontimize Boot Backend Archetype" pom.xml
-      - name: Change start-class tag from *-boot pom.xml with xmlstarlet with custom version
+      - name: Change start-class tag from *-boot pom.xml with xmlstarlet
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/__rootArtifactId__-boot
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:properties/x:start-class" -v "\${package}.ServerApplication" pom.xml
-      - name: Deploy archetype with custom version
+      - name: Deploy archetype
         run: |
-         cd target/generated-sources/archetype
-         mvn -B deploy -Pgenerate-version     
+          cd target/generated-sources/archetype
+          mvn -B deploy -Pgenerate-version
       - name: Generating backend from current archetype (Test)
         run: |
           cd /tmp
