@@ -108,7 +108,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"columns\": [\r\n        \"USER_\",\r\n        \"PASSWORD\",\r\n        \"NAME\",\r\n        \"SURNAME\",\r\n        \"EMAIL\",\r\n        \"NIF\",\r\n        \"USERBLOCKED\",\r\n        \"LASTPASSWORDUPDATE\",\r\n        \"FIRSTLOGIN\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"filter\":{\r\n        \"USER_\": \"demo\"\r\n    },\r\n    \"columns\": [\r\n        \"USER_\",\r\n        \"PASSWORD\",\r\n        \"NAME\",\r\n        \"SURNAME\",\r\n        \"EMAIL\",\r\n        \"NIF\",\r\n        \"USERBLOCKED\",\r\n        \"LASTPASSWORDUPDATE\",\r\n        \"FIRSTLOGIN\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
