@@ -20,6 +20,7 @@ Empleamos esta versión a modo de versión ***latest***, de tal manera que se pu
 
 ## ¿Puedo desplegar una version final en vez de la 99.9.9-SNAPSHOT?
 Por supuesto, cuando se ejecuta la action, hay que indicar el el input la versión que se quiere desplegar. Hay que conocer la última versión desplegada para escribir la siguiente versión correspondiente. Generará la version 99.9.9-SNASHOT, le cambiará la versión por la indicada deplegará en *Maven Central* una versión con esa numeración. **NO HAY** que modificar en ningún momento la versión del proyecto.
+[![Ontimize Boot Archetype](https://img.shields.io/maven-central/v/com.ontimize/ontimize-boot-backend-archetype?label=Latest%20Ontimize%20Boot%20archetype&style=for-the-badge)](https://maven-badges.herokuapp.com/maven-central/com.ontimize/ontimize-boot-backend-archetype)
 
 ## ¿Cómo probar el arquetipo?
 #### Descargando el fichero que se genera en GitHub Action
