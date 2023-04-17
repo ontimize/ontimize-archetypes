@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.imatia</groupId>
 		<artifactId>ontimize-boot-backend</artifactId>
-		<version>99.9.9-SNAPSHOT</version>
+		<version>1.0.5</version>
 	</parent>
 	<artifactId>ontimize-boot-backend-model</artifactId>
 	<name>${project.artifactId}</name>
