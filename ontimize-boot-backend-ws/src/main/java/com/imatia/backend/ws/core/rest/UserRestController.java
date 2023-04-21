@@ -1,6 +1,7 @@
 package com.imatia.backend.ws.core.rest;
 
 
+import com.imatia.backend.openapi.IUsersApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +17,7 @@ import com.ontimize.jee.server.rest.ORestController;
 
 @RestController
 @RequestMapping("/users")
-public class UserRestController extends ORestController<IUserService> {
+public class UserRestController extends ORestController<IUserService> implements IUsersApi {
 
 	@Autowired
 	private IUserService userSrv;

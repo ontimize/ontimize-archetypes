@@ -19,5 +19,10 @@
 			<groupId>com.ontimize.boot</groupId>
 			<artifactId>ontimize-boot-starter-rest</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.imatia</groupId>
+            <artifactId>ontimize-boot-backend-openapi</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
