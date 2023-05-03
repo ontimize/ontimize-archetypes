@@ -168,7 +168,7 @@ jobs:
       - name: Generating backend from current archetype (Test)
         run: |
           cd /tmp
-          mvn -B archetype:generate -DgroupId=com.example -DartifactId=demo -Dversion=1.0.0-SNAPSHOT -Dpackage=com.example.demo -DarchetypeGroupId=com.imatia -DarchetypeArtifactId=ontimize-classic-archetype -DarchetypeVersion=99.9.9-SNAPSHOT -DinteractiveMode=false
+          mvn -B archetype:generate -DgroupId=com.example -DartifactId=demo -Dversion=1.0.0-SNAPSHOT -Dpackage=com.example.demo -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-classic-archetype -DarchetypeVersion=99.9.9-SNAPSHOT -DinteractiveMode=false
           tar -czvf demo.tar.gz demo/
       - name: Upload backend ready to download (Test)
         uses: actions/upload-artifact@v3
