@@ -6,3 +6,68 @@ on:
         type: string
         description: 'Optional. If you want it to have an additional specific version other than 99.9.9-SNAPSHOT, write it down.'
         required: false
+jobs:
+  Deploy-Ontimize-Classic-archetype:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CI_COMMIT_AUTHOR: ${{ secrets.CI_COMMIT_AUTHOR }}
+      CI_COMMIT_MAIL: ${{ secrets.CI_COMMIT_MAIL }}
+      MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+      MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+      MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+    steps:
+      - name: Get input parameters
+        run: |
+          echo "BRANCH=${{ github.ref }}" >> $GITHUB_ENV
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+      - name: Setup Java JDK and Maven
+        uses: ontimize/setup-java-maven-gitAction@v2.4.4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_CENTRAL_TOKEN
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - name: Setup xmlstarlet
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xmlstarlet
+      - name: Create changes in project before creating archetype
+        run: |
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:properties/x:sonar.organization" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -d "/x:project/x:properties/x:sonar.host.url" pom.xml
+          rm -rf .github/
+          rm -rf README.md
+          mv HELP.md README.md
+      - name: Generate archetype from project
+        run: |
+          mvn -B clean
+          mvn -B archetype:create-from-project
+      - name: Copy .gitignore and delete GitHub Actions
+        run: |
+          cd target/generated-sources/archetype
+          mvn -B clean
+          cp ../../../.gitignore src/main/resources/archetype-resources
+      - name: Generate deploy pom.xml with xmlstarlet
+        run: |
+          cd target/generated-sources/archetype
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -a "/x:project/x:name" -t elem -n "organization" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "name" -v "Imatia Innovation" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "url" -v "http://imatia.com" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:name" -v "Ontimize Classic Archetype" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project" -t elem -n "build" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build" -t elem -n "pluginManagement" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement" -t elem -n "plugins" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin" -t elem -n "artifactId" -v "maven-archetype-plugin" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin" -t elem -n "version" -v "3.2.1" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]" -t elem -n "configuration" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]/x:configuration" -t elem -n "useDefaultExcludes" -v "false" pom.xml
+          

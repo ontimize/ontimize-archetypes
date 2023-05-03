@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.imatia</groupId>
-		<artifactId>demo</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>ontimize-classic</artifactId>
+		<version>99.9.9-SNAPSHOT</version>
 	</parent>
-	<artifactId>demo-common</artifactId>
-	<name>demo-common</name>
+	<artifactId>ontimize-classic-common</artifactId>
+	<name>ontimize-classic-common</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
