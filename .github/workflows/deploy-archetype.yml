@@ -160,8 +160,8 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:executions/x:execution/x:configuration" -t elem -n "passphraseServerId" -v "\${gpg.passphrase}" pom.xml
       - name: Move server resources to base folder
         run: |
-          ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
+          ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
           mv src/main/resources/com/imatia/classic/server/ src/main/resources/
           rm -rf src/main/resources/com/
       - name: Move client resources to base folder
