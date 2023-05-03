@@ -73,7 +73,8 @@ jobs:
       - name: Deploy archetype
         run: |
           cd target/generated-sources/archetype
-          mvn -B install
+          mvn -B install archetype:update-local-catalog
+          mvn archetype:crawl
       - name: Generating backend from current archetype (Test)
         run: |
           cd /tmp
