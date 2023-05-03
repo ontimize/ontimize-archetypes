@@ -161,12 +161,12 @@ jobs:
       - name: Move server resources to base folder
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
-          mv src/main/resources/com/imatia/classic/server/* src/main/resources/
+          mv src/main/resources/com/imatia/classic/server/ src/main/resources/
           rm -rf src/main/resources/com/
       - name: Move client resources to base folder
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client
-          mv src/main/resources/com/imatia/classic/client/* src/main/resources/
+          mv src/main/resources/com/imatia/classic/client/ src/main/resources/
           rm -rf src/main/resources/com/
       - name: Deploy archetype
         run: |
