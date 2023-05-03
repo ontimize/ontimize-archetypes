@@ -1,4 +1,4 @@
-name: Deploy Ontimize Classic backend archetype
+name: Deploy Ontimize Archetype
 on:
   workflow_dispatch:
     inputs:
