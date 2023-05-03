@@ -76,8 +76,6 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:scm" -t elem -n "connection" -v "scm:git:git://github.com/ontimize/ontimize-archetypes.git" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:scm" -t elem -n "developerConnection" -v "scm:git:ssh://github.com/ontimize/ontimize-archetypes.git" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:scm" -t elem -n "url" -v "https://github.com/ontimize/ontimize-archetypes/tree/main" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project" -t elem -n "build" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]" -t elem -n "configuration" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]/x:configuration" -t elem -n "useDefaultExcludes" -v "false" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
