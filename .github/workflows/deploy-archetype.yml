@@ -55,19 +55,35 @@ jobs:
           cd target/generated-sources/archetype
           mvn -B clean
           cp ../../../.gitignore src/main/resources/archetype-resources
-      - name: Generate deploy pom.xml with xmlstarlet
+#      - name: Generate deploy pom.xml with xmlstarlet
+#        run: |
+#          cd target/generated-sources/archetype
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -a "/x:project/x:name" -t elem -n "organization" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "name" -v "Imatia Innovation" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "url" -v "http://imatia.com" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:name" -v "Ontimize Classic Archetype" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project" -t elem -n "build" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build" -t elem -n "pluginManagement" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement" -t elem -n "plugins" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin" -t elem -n "artifactId" -v "maven-archetype-plugin" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin" -t elem -n "version" -v "3.2.1" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]" -t elem -n "configuration" pom.xml
+#          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]/x:configuration" -t elem -n "useDefaultExcludes" -v "false" pom.xml
+      - name: Deploy archetype
         run: |
           cd target/generated-sources/archetype
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -a "/x:project/x:name" -t elem -n "organization" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "name" -v "Imatia Innovation" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "url" -v "http://imatia.com" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:name" -v "Ontimize Classic Archetype" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project" -t elem -n "build" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build" -t elem -n "pluginManagement" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement" -t elem -n "plugins" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins" -t elem -n "plugin" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin" -t elem -n "artifactId" -v "maven-archetype-plugin" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin" -t elem -n "version" -v "3.2.1" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]" -t elem -n "configuration" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:build/x:pluginManagement/x:plugins/x:plugin[1]/x:configuration" -t elem -n "useDefaultExcludes" -v "false" pom.xml
+          mvn -B install
+      - name: Generating backend from current archetype (Test)
+        run: |
+          cd /tmp
+          mvn -B archetype:generate -DgroupId=com.example -DartifactId=demo -Dversion=1.0.0-SNAPSHOT -Dpackage=com.example.backendtest -DarchetypeGroupId=com.ontimize -DarchetypeArtifactId=ontimize-boot-backend-archetype -DinteractiveMode=false
+          tar -czvf demo.tar.gz demo/
+      - name: Upload backend ready to download (Test)
+        uses: actions/upload-artifact@v3
+        with:
+          name: demo-zip
+          retention-days: 1
+          path: |
+            /tmp/demo.tar.gz
           
