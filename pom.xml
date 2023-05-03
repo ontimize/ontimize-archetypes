@@ -11,7 +11,6 @@
 	<name>Ontimize Classic Archetype</name>
 	<description>Ontimize Classic Archetype</description>
 	<properties>
-		<projectParent.artifactId>demo</projectParent.artifactId>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ontimize.version>6.0.17</ontimize.version>
 		<plaf.version>1.0.12</plaf.version>
