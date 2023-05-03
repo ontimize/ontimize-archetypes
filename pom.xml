@@ -8,8 +8,8 @@
 	<version>99.9.9-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>Ontimize Classic Archetype</name>
-	<description>Ontimize Classic Archetype</description>
+	<name>Ontimize Classic Project</name>
+	<description>Ontimize Classic Project</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ontimize.version>6.0.17</ontimize.version>
