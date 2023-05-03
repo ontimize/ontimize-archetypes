@@ -58,6 +58,7 @@ jobs:
       - name: Generate deploy pom.xml with xmlstarlet
         run: |
           cd target/generated-sources/archetype
+          cat pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:groupId" -v "com.ontimize" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -a "/x:project/x:name" -t elem -n "organization" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:organization" -t elem -n "name" -v "Imatia Innovation" pom.xml
@@ -158,6 +159,7 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:executions/x:execution/x:configuration/x:gpgArguments" -t elem -n "arg" -v "loopback" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:executions/x:execution/x:configuration" -t elem -n "keyname" -v "\${gpg.keyname}" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:executions/x:execution/x:configuration" -t elem -n "passphraseServerId" -v "\${gpg.passphrase}" pom.xml
+          cat pom.xml
 #      - name: Change server pom.xml paths
 #        run: |
 #          cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
