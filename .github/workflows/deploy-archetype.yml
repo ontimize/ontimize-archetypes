@@ -158,17 +158,14 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:executions/x:execution/x:configuration/x:gpgArguments" -t elem -n "arg" -v "loopback" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:executions/x:execution/x:configuration" -t elem -n "keyname" -v "\${gpg.keyname}" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -s "/x:project/x:profiles/x:profile/x:build/x:plugins/x:plugin[4]/x:executions/x:execution/x:configuration" -t elem -n "passphraseServerId" -v "\${gpg.passphrase}" pom.xml
-      - name: Move server resources to base folder
+      - name: Change server pom.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
-          ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-          mv src/main/resources/com/imatia/classic/server/ src/main/resources/
-          rm -rf src/main/resources/com/
-      - name: Move client resources to base folder
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:mainClass" -v "${package}.server.ProjectServerLauncher" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument" -v "${packageInPathFormat}/server/conf/server.properties" pom.xml
+      - name: Change client pom.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client
-          mv src/main/resources/com/imatia/classic/client/ src/main/resources/
-          rm -rf src/main/resources/com/
       - name: Deploy archetype
         run: |
           cd target/generated-sources/archetype
