@@ -1,4 +1,4 @@
-package com.imatia.demo.server;
+package com.imatia.classic.server;
 
 import com.ontimize.db.DBUtils;
 import com.ontimize.db.UserEntity;

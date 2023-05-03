@@ -1,4 +1,4 @@
-package com.imatia.demo.client.menu;
+package com.imatia.classic.client.menu;
 
 import java.util.*;
 import java.awt.event.*;

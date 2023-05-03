@@ -1,4 +1,4 @@
-package com.imatia.demo.server.entities;
+package com.imatia.classic.server.entities;
 
 import java.util.Vector;
 

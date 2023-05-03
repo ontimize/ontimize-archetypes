@@ -1,4 +1,4 @@
-package com.imatia.demo.client.modules.sql;
+package com.imatia.classic.client.modules.sql;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

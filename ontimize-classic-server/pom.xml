@@ -120,9 +120,9 @@
 						<artifactId>exec-maven-plugin</artifactId>
 						<version>1.2.1</version>
 						<configuration>
-							<mainClass>com.imatia.demo.server.ProjectServerLauncher</mainClass>
+							<mainClass>com.imatia.classic.server.ProjectServerLauncher</mainClass>
 							<arguments>
-								<argument>com/imatia/demo/server/conf/server.properties</argument>
+								<argument>com/imatia/classic/server/conf/server.properties</argument>
 							</arguments>
 						</configuration>
 					</plugin>

@@ -1,4 +1,4 @@
-package com.imatia.demo.server;
+package com.imatia.classic.server;
 
 import java.util.Hashtable;
 import com.ontimize.locator.SecureReferenceLocator;

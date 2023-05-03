@@ -1,4 +1,4 @@
-package com.imatia.demo.common;
+package com.imatia.classic.common;
 
 /**
  * Hello world!

@@ -1,4 +1,4 @@
-package com.imatia.demo.client;
+package com.imatia.classic.client;
 
 import com.ontimize.gui.ApplicationLauncher;
 import com.ontimize.gui.ApplicationToolBar;

@@ -75,16 +75,12 @@
 						<artifactId>exec-maven-plugin</artifactId>
 						<version>1.2.1</version>
 						<configuration>
-							<mainClass>com.imatia.demo.client.ClientLauncher</mainClass>
+							<mainClass>com.imatia.classic.client.ClientLauncher</mainClass>
 							<arguments>
-								<argument>com/imatia/demo/client/conf/labels.xml</argument>
-								<argument>com/imatia/demo/client/clientapplication.xml</argument>
+								<argument>com/imatia/classic/client/conf/labels.xml</argument>
+								<argument>com/imatia/classic/client/clientapplication.xml</argument>
 								<argument>-conf</argument>
-								<argument>com/imatia/demo/client/conf/defaultXmlConfigurationParameters.xml</argument>
-								<argument>-Dcom.ontimize.gui.lafclassname</argument>
-								<argument>com.ontimize.plaf.OntimizeLookAndFeel</argument>
-								<argument>-Dcom.ontimize.gui.lafstyle=</argument>
-								<argument>com/ontimize/plaf/style/whiteStyle.css</argument>
+								<argument>com/imatia/classic/client/conf/defaultXmlConfigurationParameters.xml</argument>
 							</arguments>
 						</configuration>
 					</plugin>
