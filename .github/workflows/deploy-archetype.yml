@@ -171,7 +171,7 @@ jobs:
           sed -i 's DatabaseProperties=com/imatia/demo/server/conf/database.properties DatabaseProperties=${packageInPathFormat}/server/conf/database.properties g' conf/locator.properties
           sed -i 's EntityProperties=com/imatia/demo/server/conf/entities.properties EntityProperties=${packageInPathFormat}/server/conf/entities.properties g' conf/locator.properties
           sed -i 's AutonumericalProperties=com/imatia/demo/server/conf/autonumerical.properties AutonumericalProperties=${packageInPathFormat}/server/conf/autonumerical.properties g' conf/locator.properties
-          sed -i 's LocatorProperties=com/imatia/demo/server/conf/locator.properties LocatorProperties=${packageInPathFormat}/server/conf/locator.properties g' conf/locator.properties
+          sed -i 's LocatorProperties=com/imatia/demo/server/conf/locator.properties LocatorProperties=${packageInPathFormat}/server/conf/locator.properties g' conf/server.properties
       - name: Change client pom.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client
