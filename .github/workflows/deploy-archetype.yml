@@ -160,6 +160,7 @@ jobs:
       - name: Change server properties paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
+          mvn -v
           ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
       - name: Change client pom.xml paths
         run: |
