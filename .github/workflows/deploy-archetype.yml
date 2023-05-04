@@ -160,10 +160,10 @@ jobs:
       - name: Change client pom.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:mainClass" -v "\${package}.client.ClientLauncher" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument[1]" -v "\${packageInPathFormat}/client/conf/labels.xml" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument[2]" -v "\${packageInPathFormat}/client/clientapplication.xml" pom.xml
-          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument[4]" -v "\${packageInPathFormat}/client/conf/defaultXmlConfigurationParameters.xml" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[1]/x:build/x:plugins/x:plugin/x:configuration/x:mainClass" -v "\${package}.client.ClientLauncher" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[1]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument[1]" -v "\${packageInPathFormat}/client/conf/labels.xml" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[1]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument[2]" -v "\${packageInPathFormat}/client/clientapplication.xml" pom.xml
+          xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[1]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument[4]" -v "\${packageInPathFormat}/client/conf/defaultXmlConfigurationParameters.xml" pom.xml
       - name: Deploy archetype
         run: |
           cd target/generated-sources/archetype
