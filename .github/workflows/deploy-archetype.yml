@@ -159,9 +159,12 @@ jobs:
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument" -v "\${packageInPathFormat}/server/conf/server.properties" pom.xml
       - name: Change server properties paths
         run: |
-          cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
-          mvn -v
+          cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server/src/main/resources/*/server
           ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+          find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
+          sed -i 's DatabaseProperties=com/imatia/demo/server/conf/database.properties DatabaseProperties=${packageInPathFormat}/server/conf/database.properties g' conf/locator.properties
+          sed -i 's EntityProperties=com/imatia/demo/server/conf/entities.properties EntityProperties=${packageInPathFormat}/server/conf/entities.properties g' conf/locator.properties
+          sed -i 's AutonumericalProperties=com/imatia/demo/server/conf/autonumerical.properties AutonumericalProperties=${packageInPathFormat}/server/conf/autonumerical.properties g' conf/locator.properties
       - name: Change client pom.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client
