@@ -1,4 +1,6 @@
 # Ontimize Classic Project
+## Prerequisite
+* Java 1.8
 ## First init
 ```
 mvn install
