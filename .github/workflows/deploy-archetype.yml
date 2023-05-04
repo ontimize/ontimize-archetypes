@@ -176,6 +176,7 @@ jobs:
       - name: Change clientapplication.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client/src/main/resources/*/client
+          tail -n +4 clientapplication.xml > clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@splash" -v "\${packageInPathFormat}/client/images/00_login-splash.png;2" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@loginicon" -v "\${packageInPathFormat}/client/images/back_splash.png" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@icon" -v "\${packageInPathFormat}/client/images/ontimize16x16.png" clientapplication.xml
@@ -183,7 +184,6 @@ jobs:
           echo "#set( \$symbol_dollar = '\$' )" >> clientapplication2.xml 
           echo "#set( \$symbol_pound = '#' )" >> clientapplication2.xml 
           cat clientapplication.xml >> clientapplication2.xml
-          rm clientapplication.xml
           mv clientapplication2.xml clientapplication.xml
       - name: Deploy archetype
         run: |
