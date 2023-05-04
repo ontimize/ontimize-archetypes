@@ -160,8 +160,6 @@ jobs:
       - name: Change server properties paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server/src/main/resources/*/server
-          ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-          find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
           sed -i 's DatabaseProperties=com/imatia/demo/server/conf/database.properties DatabaseProperties=${packageInPathFormat}/server/conf/database.properties g' conf/locator.properties
           sed -i 's EntityProperties=com/imatia/demo/server/conf/entities.properties EntityProperties=${packageInPathFormat}/server/conf/entities.properties g' conf/locator.properties
           sed -i 's AutonumericalProperties=com/imatia/demo/server/conf/autonumerical.properties AutonumericalProperties=${packageInPathFormat}/server/conf/autonumerical.properties g' conf/locator.properties
@@ -176,22 +174,24 @@ jobs:
       - name: Change clientapplication.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client/src/main/resources/*/client
-          tail -n +4 clientapplication.xml > clientapplication2.xml
-          mv clientapplication2.xml clientapplication.xml
+          sed -i 1,3d clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@splash" -v "\${packageInPathFormat}/client/images/00_login-splash.png;2" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@loginicon" -v "\${packageInPathFormat}/client/images/back_splash.png" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@icon" -v "\${packageInPathFormat}/client/images/ontimize16x16.png" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@preferences" -v "OntimizePreferences.conf" clientapplication.xml
-          echo "#set( \$symbol_escape = '\\' )" > clientapplication2.xml
-          echo "#set( \$symbol_dollar = '\$' )" >> clientapplication2.xml 
-          echo "#set( \$symbol_pound = '#' )" >> clientapplication2.xml 
-          cat clientapplication.xml >> clientapplication2.xml
-          mv clientapplication2.xml clientapplication.xml
+          sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" clientapplication.xml
+          sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" clientapplication.xml
+          sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" clientapplication.xml
       - name: Deploy archetype
         run: |
           cd target/generated-sources/archetype
-          mvn -B install archetype:update-local-catalog
-          mvn archetype:crawl
+          mvn -B deploy -Pgenerate-version
+      - name: Deploy custom version archetype
+        if: "${{ github.event.inputs.custom-version != '' }}"
+        run: |
+          cd target/generated-sources/archetype
+          mvn -B versions:set -DnewVersion=${{ github.event.inputs.custom-version }} versions:commit
+          mvn -B deploy -Pgenerate-version
       - name: Generating backend from current archetype (Test)
         run: |
           cd /tmp
