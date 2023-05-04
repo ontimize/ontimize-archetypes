@@ -157,6 +157,10 @@ jobs:
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:mainClass" -v "\${package}.server.ProjectServerLauncher" pom.xml
           xmlstarlet ed --inplace -N x=http://maven.apache.org/POM/4.0.0 -u "/x:project/x:profiles/x:profile[2]/x:build/x:plugins/x:plugin/x:configuration/x:arguments/x:argument" -v "\${packageInPathFormat}/server/conf/server.properties" pom.xml
+      - name: Change server properties paths
+        run: |
+          cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server
+          ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
       - name: Change client pom.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client
