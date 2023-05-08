@@ -50,6 +50,7 @@ jobs:
         run: |
           mvn -B clean
           mvn -B archetype:create-from-project
+          cat README.md
       - name: Copy .gitignore and delete GitHub Actions
         run: |
           cd target/generated-sources/archetype
