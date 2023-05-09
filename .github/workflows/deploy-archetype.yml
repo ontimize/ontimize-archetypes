@@ -58,6 +58,9 @@ jobs:
         run: |
           mvn -B clean
           mvn -B archetype:create-from-project
+      - name: Filter README.md paths
+        run: |
+          find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
       - name: Copy .gitignore and delete GitHub Actions
         run: |
           cd target/generated-sources/archetype
