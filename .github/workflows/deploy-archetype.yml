@@ -195,13 +195,13 @@ jobs:
       - name: Change server properties paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server/src/main/resources/*/server
-          cat conf/locator.properties
           sed -i 's Package=${groupId}.demo.server.entities. Package=${package}.server.entities. g' conf/locator.properties
           sed -i 's DatabaseProperties=com/imatia/demo/server/conf/database.properties DatabaseProperties=${packageInPathFormat}/server/conf/database.properties g' conf/locator.properties
           sed -i 's EntityProperties=com/imatia/demo/server/conf/entities.properties EntityProperties=${packageInPathFormat}/server/conf/entities.properties g' conf/locator.properties
           sed -i 's AutonumericalProperties=com/imatia/demo/server/conf/autonumerical.properties AutonumericalProperties=${packageInPathFormat}/server/conf/autonumerical.properties g' conf/locator.properties
           sed -i 's LocatorProperties=com/imatia/demo/server/conf/locator.properties LocatorProperties=${packageInPathFormat}/server/conf/locator.properties g' conf/server.properties
           sed -i 's Resource=${groupId}.demo.server.i18n.serverBundle Resource=${package}.server.i18n.serverBundle g' conf/server.properties
+          cat conf/locator.properties
       - name: Change client pom.xml paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client
