@@ -211,6 +211,7 @@ jobs:
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client/src/main/resources/*/client
           sed -i 1,3d clientapplication.xml
+          cat clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@splash" -v "\${packageInPathFormat}/client/images/00_login-splash.png;2" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@loginicon" -v "\${packageInPathFormat}/client/images/back_splash.png" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@icon" -v "\${packageInPathFormat}/client/images/ontimize16x16.png" clientapplication.xml
