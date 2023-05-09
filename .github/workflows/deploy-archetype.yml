@@ -57,6 +57,7 @@ jobs:
           sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" README.md
           sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" README.md
           sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" README.md
+          sed -i "1 i\#set\( \$symbol_pound = \'##\' \)" README.md
       - name: Generate archetype from project
         run: |
           mvn -B clean
