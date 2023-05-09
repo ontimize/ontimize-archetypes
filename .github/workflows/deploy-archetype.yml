@@ -48,6 +48,10 @@ jobs:
           mv HELP.md README.md
       - name: Change README.md paths
         run: |
+          sed -i 's #### $h4 g' README.md
+          sed -i 's ### $h3 g' README.md
+          sed -i 's ## $h2 g' README.md
+          sed -i 's # $h1 g' README.md
           sed -i 's com.imatia.classic.server.ProjectServerLauncher ${package}.server.ProjectServerLauncher g' README.md
           sed -i 's com/imatia/classic/server/conf/server.properties ${packageInPathFormat}/server/conf/server.properties g' README.md
           sed -i 's com.imatia.classic.client.ClientLauncher ${package}.client.ClientLauncher g' README.md
@@ -57,7 +61,7 @@ jobs:
           sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" README.md
           sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" README.md
           sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" README.md
-          sed -i "1 i\#set\( \$symbol_pound = \'##\' \)" README.md
+          cat README.md
       - name: Generate archetype from project
         run: |
           mvn -B clean
