@@ -65,8 +65,6 @@ jobs:
           sed -i "1 i\#set\( \$h2 = \'##\' \)" README.md
           sed -i "1 i\#set\( \$h3 = \'###\' \)" README.md
           sed -i "1 i\#set\( \$h4 = \'####\' \)" README.md
-          
-          cat README.md
       - name: Generate archetype from project
         run: |
           mvn -B clean
