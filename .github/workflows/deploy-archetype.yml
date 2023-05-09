@@ -54,9 +54,9 @@ jobs:
           sed -i 's com/imatia/classic/client/conf/labels.xml ${packageInPathFormat}/client/conf/labels.xml g' README.md
           sed -i 's com/imatia/classic/client/clientapplication.xml ${packageInPathFormat}/client/clientapplication.xml g' README.md
           sed -i 's com/imatia/classic/client/conf/defaultXmlConfigurationParameters.xml ${packageInPathFormat}/client/conf/defaultXmlConfigurationParameters.xml g' README.md
-          sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" archetype-metadata.xml
-          sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" archetype-metadata.xml
-          sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" archetype-metadata.xml
+          sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" README.md
+          sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" README.md
+          sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" README.md
       - name: Generate archetype from project
         run: |
           mvn -B clean
