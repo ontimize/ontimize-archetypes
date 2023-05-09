@@ -217,7 +217,7 @@ jobs:
           xmlstarlet ed --inplace -u "/MainApplication/@loginicon" -v "\${packageInPathFormat}/client/images/back_splash.png" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@icon" -v "\${packageInPathFormat}/client/images/ontimize16x16.png" clientapplication.xml
           xmlstarlet ed --inplace -u "/MainApplication/@preferences" -v "OntimizePreferences.conf" clientapplication.xml
-          xmlstarlet ed --inplace -u "/MainApplication/@resources" -v "\${package}.client.i18n.bundle.conf" clientapplication.xml
+          xmlstarlet ed --inplace -u "/MainApplication/@resources" -v "\${package}.client.i18n.bundle" clientapplication.xml
           sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" clientapplication.xml
           sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" clientapplication.xml
           sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" clientapplication.xml
