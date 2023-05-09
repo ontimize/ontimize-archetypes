@@ -61,6 +61,7 @@ jobs:
       - name: Filter README.md paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/META-INF/maven
+          xmlstarlet ed --inplace -N x=https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 -a "/x:archetype-descriptor/x:fileSets/x:fileSet[1]" -t attr -n "filtered" -v "true" archetype-metadata.xml
           cat archetype-metadata.xml
       - name: Copy .gitignore and delete GitHub Actions
         run: |
