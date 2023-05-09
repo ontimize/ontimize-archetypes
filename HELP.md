@@ -27,10 +27,10 @@ mvn exec:java -Prun_server
 </td>
     <td>
 
-    JDK ---------------→ 1.8
-    Classpath module --→ *-server
-    Server main method → com.imatia.classic.server.ProjectServerLauncher
-    Server argument --→ com/imatia/classic/server/conf/server.properties
+    JDK -------------→ 1.8
+    Classpath module → *-server
+    Main method -----→ com.imatia.classic.server.ProjectServerLauncher
+    Arguments -------→ com/imatia/classic/server/conf/server.properties
    </td>
   </tr>
 </table>
@@ -52,13 +52,13 @@ mvn exec:java -Prun_client
 </td>
     <td>
 
-    JDK ---------------→ 1.8
-    Classpath module --→ *-client
-    Client main method → com.imatia.classic.client.ClientLauncher
-    Client argument 1 -→ com/imatia/classic/client/conf/labels.xml
-    Client argument 2 -→ com/imatia/classic/client/clientapplication.xml
-    Client argument 3 -→ -conf
-    Client argument 4 -→ com/imatia/classic/client/conf/defaultXmlConfigurationParameters.xml
+    JDK -------------→ 1.8
+    Classpath module → *-client
+    Main method -----→ com.imatia.classic.client.ClientLauncher
+    Arguments  ------→ com/imatia/classic/client/conf/labels.xml
+                       com/imatia/classic/client/clientapplication.xml
+                       -conf
+                       com/imatia/classic/client/conf/defaultXmlConfigurationParameters.xml
    </td>
   </tr>
 </table>

@@ -50,7 +50,14 @@ jobs:
         run: |
           mvn -B clean
           mvn -B archetype:create-from-project
-          cat README.md
+      - name: Change README.md paths
+        run: |
+          sed -i 's com.imatia.classic.server.ProjectServerLauncher ${package}.server.ProjectServerLauncher g' README.md
+          sed -i 's com/imatia/classic/server/conf/server.properties ${packageInPathFormat}/server/conf/server.properties g' README.md
+          sed -i 's com.imatia.classic.client.ClientLauncher ${package}.client.ClientLauncher g' README.md
+          sed -i 's com/imatia/classic/client/conf/labels.xml ${packageInPathFormat}/client/conf/labels.xml g' README.md
+          sed -i 's com/imatia/classic/client/clientapplication.xml ${packageInPathFormat}/client/clientapplication.xml g' README.md
+          sed -i 's com/imatia/classic/client/conf/defaultXmlConfigurationParameters.xml ${packageInPathFormat}/client/conf/defaultXmlConfigurationParameters.xml g' README.md
       - name: Copy .gitignore and delete GitHub Actions
         run: |
           cd target/generated-sources/archetype
