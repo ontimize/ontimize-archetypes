@@ -46,10 +46,6 @@ jobs:
           rm -rf .github/
           rm -rf README.md
           mv HELP.md README.md
-      - name: Generate archetype from project
-        run: |
-          mvn -B clean
-          mvn -B archetype:create-from-project
       - name: Change README.md paths
         run: |
           sed -i 's com.imatia.classic.server.ProjectServerLauncher ${package}.server.ProjectServerLauncher g' README.md
@@ -58,6 +54,10 @@ jobs:
           sed -i 's com/imatia/classic/client/conf/labels.xml ${packageInPathFormat}/client/conf/labels.xml g' README.md
           sed -i 's com/imatia/classic/client/clientapplication.xml ${packageInPathFormat}/client/clientapplication.xml g' README.md
           sed -i 's com/imatia/classic/client/conf/defaultXmlConfigurationParameters.xml ${packageInPathFormat}/client/conf/defaultXmlConfigurationParameters.xml g' README.md
+      - name: Generate archetype from project
+        run: |
+          mvn -B clean
+          mvn -B archetype:create-from-project
       - name: Copy .gitignore and delete GitHub Actions
         run: |
           cd target/generated-sources/archetype
