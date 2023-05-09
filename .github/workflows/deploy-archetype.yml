@@ -54,6 +54,9 @@ jobs:
           sed -i 's com/imatia/classic/client/conf/labels.xml ${packageInPathFormat}/client/conf/labels.xml g' README.md
           sed -i 's com/imatia/classic/client/clientapplication.xml ${packageInPathFormat}/client/clientapplication.xml g' README.md
           sed -i 's com/imatia/classic/client/conf/defaultXmlConfigurationParameters.xml ${packageInPathFormat}/client/conf/defaultXmlConfigurationParameters.xml g' README.md
+          sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" archetype-metadata.xml
+          sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" archetype-metadata.xml
+          sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" archetype-metadata.xml
       - name: Generate archetype from project
         run: |
           mvn -B clean
@@ -62,9 +65,6 @@ jobs:
         run: |
           cd target/generated-sources/archetype/src/main/resources/META-INF/maven
           xmlstarlet ed --inplace -N x=https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 -a "/x:archetype-descriptor/x:fileSets/x:fileSet[1]" -t attr -n "filtered" -v "true" archetype-metadata.xml
-          sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" archetype-metadata.xml
-          sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" archetype-metadata.xml
-          sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" archetype-metadata.xml
       - name: Copy .gitignore and delete GitHub Actions
         run: |
           cd target/generated-sources/archetype
