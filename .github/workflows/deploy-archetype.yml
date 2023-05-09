@@ -195,6 +195,7 @@ jobs:
       - name: Change server properties paths
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-server/src/main/resources/*/server
+          cat conf/locator.properties
           sed -i 's Package=${groupId}.demo.server.entities. Package=${package}.server.entities. g' conf/locator.properties
           sed -i 's DatabaseProperties=com/imatia/demo/server/conf/database.properties DatabaseProperties=${packageInPathFormat}/server/conf/database.properties g' conf/locator.properties
           sed -i 's EntityProperties=com/imatia/demo/server/conf/entities.properties EntityProperties=${packageInPathFormat}/server/conf/entities.properties g' conf/locator.properties
