@@ -228,7 +228,6 @@ jobs:
           sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" menu.xml
           sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" menu.xml
           sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" menu.xml
-          cat menu.xml
       - name: Deploy archetype
         run: |
           cd target/generated-sources/archetype
