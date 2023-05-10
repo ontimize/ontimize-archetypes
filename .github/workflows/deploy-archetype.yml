@@ -220,6 +220,10 @@ jobs:
           sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" clientapplication.xml
           sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" clientapplication.xml
           sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" clientapplication.xml
+      - name: Change menu.xml resource bundle
+        run: |
+          cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client/src/main/resources/*/client/menu
+          cat menu.xml
       - name: Deploy archetype
         run: |
           cd target/generated-sources/archetype
