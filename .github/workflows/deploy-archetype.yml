@@ -223,8 +223,11 @@ jobs:
       - name: Change menu.xml resource bundle
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client/src/main/resources/*/client/menu
-          sed -i 1,3d clientapplication.xml
+          sed -i 1,3d menu.xml
           xmlstarlet ed --inplace -u "/ApplicationMenuBar/MenuLocale/@resourceBundle" -v "\${package}.client.i18n.bundle" menu.xml
+          sed -i "1 i #set\( \$symbol_escape = \'\\\' \)" menu.xml
+          sed -i "1 i\#set\( \$symbol_dollar = \'\$\' \)" menu.xml
+          sed -i "1 i\#set\( \$symbol_pound = \'#\' \)" menu.xml
           cat menu.xml
       - name: Deploy archetype
         run: |
