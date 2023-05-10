@@ -223,6 +223,8 @@ jobs:
       - name: Change menu.xml resource bundle
         run: |
           cd target/generated-sources/archetype/src/main/resources/archetype-resources/*-client/src/main/resources/*/client/menu
+          sed -i 1,3d clientapplication.xml
+          xmlstarlet ed --inplace -u "/ApplicationMenuBar/MenuLocale/@resourceBundle" -v "\${package}.client.i18n.bundle" menu.xml
           cat menu.xml
       - name: Deploy archetype
         run: |
