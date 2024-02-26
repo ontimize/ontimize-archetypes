@@ -27,6 +27,8 @@ ontimize:
          upper-like: true
    security:
       mode: default
+      jwt:
+         password: cH4nG3_M3** # ← CHANGE THIS VALUE
       ignore-paths: /app/**
       role-information-service:
          role-repository: UserRoleDao
